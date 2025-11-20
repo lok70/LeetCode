@@ -1,10 +1,11 @@
-func twoSum(nums []int, target int) []int {
-    for i := 0; i < len(nums); i++{
-        for j := i + 1; j < len(nums); j++{
-            if nums[j] == target - nums[i]{
-                return []int{i,j}
-            }
+func twoSum(nums []int, target int) []int{
+    numMap := make(map[int]int)
+    for i, num := range nums{
+        comp := target - num
+        if index, found := numMap[comp]; found{
+            return []int{index, i}
         }
+        numMap[num] = i
     }
-    return []int{}
+    return nil
 }
